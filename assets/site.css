@@ -1,0 +1,265 @@
+/* ============================================================
+   Be The Change Taiwan — shared stylesheet
+   Palette: warm terracotta + ivory, photographic, grounded
+   ============================================================ */
+
+:root {
+  /* Brand earth tones (from brand guide — 大地棕 / Terracotta) */
+  --brand:        #A0552B;   /* primary terracotta — used in logo wordmark */
+  --brand-deep:   #7C3F1E;   /* darker accent */
+  --brand-soft:   #C77A4D;   /* lighter accent */
+  --brand-tint:   #EDD9C6;   /* very light wash */
+
+  /* Neutrals */
+  --ink:          #2A1F18;
+  --ink-soft:     #5A4A3F;
+  --ink-mute:     #8A7A6F;
+  --line:         #E6DBCF;
+  --paper:        #FBF7F1;   /* warm ivory */
+  --paper-2:      #F4EBDF;   /* secondary cream */
+  --white:        #FFFFFF;
+
+  /* Type scale (px / rem) */
+  --f-hero:    clamp(40px, 5.5vw, 72px);
+  --f-h1:      clamp(32px, 4vw, 52px);
+  --f-h2:      clamp(24px, 2.6vw, 34px);
+  --f-h3:      18px;
+  --f-body:    16px;
+  --f-small:   14px;
+
+  --maxw: 1240px;
+  --gut: clamp(20px, 4vw, 56px);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Noto Sans TC", "Noto Sans CJK TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.7;
+  font-size: var(--f-body);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { display: block; max-width: 100%; }
+
+a { color: var(--brand); text-decoration: none; }
+a:hover { color: var(--brand-deep); }
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gut); }
+
+/* ───────────── Top bar ───────────── */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(251, 247, 241, 0.92);
+  backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.topbar-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 76px;
+  max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gut);
+}
+.brand-mark {
+  display: inline-flex; align-items: center;
+  color: var(--brand);
+}
+.brand-mark img.logo {
+  height: 50px; width: auto; display: block;
+}
+@media (max-width: 640px){
+  .brand-mark img.logo { height: 40px; }
+}
+
+nav.primary {
+  display: flex; gap: clamp(8px, 2vw, 32px); align-items: center;
+  font-size: 15px;
+}
+nav.primary a {
+  color: var(--ink-soft);
+  padding: 8px 4px;
+  position: relative;
+  font-weight: 500;
+  transition: color .2s ease;
+}
+nav.primary a:hover { color: var(--brand); }
+nav.primary a.active { color: var(--brand); }
+nav.primary a.active::after {
+  content: ""; position: absolute; left: 4px; right: 4px; bottom: 0;
+  height: 2px; background: var(--brand);
+}
+nav.primary .nav-cta {
+  margin-left: 12px;
+  background: var(--brand); color: var(--white);
+  padding: 10px 22px; border-radius: 999px;
+  font-weight: 600;
+  transition: background .2s ease;
+}
+nav.primary .nav-cta:hover { background: var(--brand-deep); color: var(--white); }
+
+/* ───────────── Buttons ───────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 999px;
+  font-weight: 600; font-size: 15px;
+  border: none; cursor: pointer;
+  transition: all .2s ease;
+  font-family: inherit;
+}
+.btn-primary { background: var(--brand); color: var(--white); }
+.btn-primary:hover { background: var(--brand-deep); color: var(--white); }
+.btn-ghost {
+  background: transparent; color: var(--white);
+  border: 1.5px solid rgba(255,255,255,0.7);
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.15); color: var(--white); }
+.btn-outline {
+  background: transparent; color: var(--brand);
+  border: 1.5px solid var(--brand);
+}
+.btn-outline:hover { background: var(--brand); color: var(--white); }
+
+/* ───────────── Section header helpers ───────────── */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 13px; letter-spacing: 0.22em;
+  color: var(--brand);
+  font-weight: 600; text-transform: uppercase;
+}
+.eyebrow::before {
+  content: ""; display: block; width: 32px; height: 1px; background: var(--brand);
+}
+.section-title-cn {
+  font-family: "Noto Serif TC", "Noto Serif CJK TC", serif;
+  font-size: var(--f-h1);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  margin: 12px 0 8px;
+}
+.section-title-en {
+  font-size: 14px; letter-spacing: 0.32em;
+  color: var(--ink-mute);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.section-lead {
+  font-size: 17px;
+  color: var(--ink-soft);
+  max-width: 760px;
+  margin: 24px auto 0;
+  line-height: 1.85;
+}
+
+/* ───────────── Page hero (used by inner pages) ───────────── */
+.page-hero {
+  position: relative;
+  min-height: 460px;
+  display: flex; align-items: flex-end;
+  color: var(--white);
+  overflow: hidden;
+}
+.page-hero .bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+}
+.page-hero .scrim {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(42,31,24,0.15) 0%, rgba(42,31,24,0.55) 60%, rgba(42,31,24,0.78) 100%);
+}
+.page-hero .scrim-warm {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(160,85,43,0.20) 0%, rgba(124,63,30,0.6) 100%);
+  mix-blend-mode: multiply;
+}
+.page-hero .inner {
+  position: relative; z-index: 2;
+  max-width: var(--maxw); margin: 0 auto; padding: 80px var(--gut) 64px;
+  width: 100%;
+}
+.page-hero .breadcrumbs {
+  font-size: 13px; letter-spacing: 0.18em; opacity: 0.85;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.page-hero .breadcrumbs a { color: inherit; opacity: 0.7; }
+.page-hero .breadcrumbs a:hover { opacity: 1; color: inherit; }
+.page-hero h1 {
+  font-family: "Noto Serif TC", "Noto Serif CJK TC", serif;
+  font-size: var(--f-hero);
+  font-weight: 700;
+  margin: 0 0 12px;
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+  max-width: 16ch;
+}
+.page-hero .hero-en {
+  font-size: 14px; letter-spacing: 0.34em;
+  text-transform: uppercase;
+  opacity: 0.85; font-weight: 500;
+}
+.page-hero .hero-lead {
+  margin-top: 22px; max-width: 620px;
+  font-size: 17px; line-height: 1.85;
+  opacity: 0.92;
+}
+
+/* ───────────── Footer ───────────── */
+footer.site-footer {
+  background: #2A1F18;
+  color: rgba(255,255,255,0.78);
+  padding: 64px 0 28px;
+  margin-top: 80px;
+}
+footer.site-footer .grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 48px;
+}
+@media (max-width: 880px) {
+  footer.site-footer .grid { grid-template-columns: 1fr 1fr; }
+}
+footer.site-footer h4 {
+  font-size: 13px; letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brand-soft);
+  margin: 0 0 18px;
+  font-weight: 600;
+}
+footer.site-footer a { color: rgba(255,255,255,0.78); display: block; padding: 4px 0; font-size: 14px; }
+footer.site-footer a:hover { color: var(--white); }
+footer.site-footer .footer-brand img.logo-footer {
+  height: 52px; width: auto;
+  /* Logo is brown — keep it visible on dark footer by tinting it warm */
+  filter: brightness(0) saturate(100%) invert(58%) sepia(36%) saturate(589%) hue-rotate(346deg) brightness(91%) contrast(85%);
+  margin-bottom: 20px; display: block;
+}
+footer.site-footer .footer-brand p {
+  font-size: 14px; line-height: 1.8; max-width: 32ch;
+  color: rgba(255,255,255,0.6);
+}
+footer.site-footer .bar {
+  margin-top: 56px; padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 0.05em;
+}
+
+/* ───────────── Utility ───────────── */
+.divider {
+  width: 48px; height: 2px; background: var(--brand);
+  margin: 20px 0;
+}
+.divider.center { margin-left: auto; margin-right: auto; }
+.center { text-align: center; }
+
+/* Logo block component */
+.logo-svg .leaf { fill: var(--brand); }
